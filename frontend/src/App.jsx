@@ -10,6 +10,10 @@ import StaffScanner from './components/StaffScanner';
 import Rack from './components/Rack';
 import SceneManager from './components/SceneManager';
 
+const API_URL = import.meta.env.PROD 
+  ? "https://wha-backend.onrender.com" // <--- เอา URL จาก Render มาใส่ตรงนี้
+  : "http://localhost:5000";
+
 function App() {
   const [user, setUser] = useState(null);
   const [racks, setRacks] = useState([]);
@@ -20,7 +24,7 @@ function App() {
 
   // ดึงข้อมูลจาก Backend
   useEffect(() => {
-    axios.get('http://localhost:5000/api/racks')
+    axios.get(`${API_URL}/api/racks`)
       .then(res => setRacks(res.data))
       .catch(err => console.error("โหลดข้อมูลไม่สำเร็จ", err));
   }, []);
