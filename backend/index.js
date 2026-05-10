@@ -6,13 +6,17 @@ const bwipjs = require('bwip-js');
 const path = require('path');
 
 const app = express();
-app.use(cors());
+app.use(cors({
+    origin: '*', 
+    methods: ['GET', 'POST', 'PUT', 'DELETE'],
+    allowedHeaders: ['Content-Type', 'Authorization']
+}));
 app.use(express.json());
 
 // ==========================================
 // 1. การเชื่อมต่อ DATABASE (MONGODB ATLAS)
 // ==========================================
-const mongoURI = "mongodb://kayzy:55n284k4@ac-avnuisi-shard-00-00.7mdbr1u.mongodb.net:27017,ac-avnuisi-shard-00-01.7mdbr1u.mongodb.net:27017,ac-avnuisi-shard-00-02.7mdbr1u.mongodb.net:27017/?ssl=true&replicaSet=atlas-80bsja-shard-0&authSource=admin&appName=Cluster0";
+const mongoURI = process.env.MONGO_URI || "mongodb://kayzy:55n284k4@ac-avnuisi-shard-00-00.7mdbr1u.mongodb.net:27017,ac-avnuisi-shard-00-01.7mdbr1u.mongodb.net:27017,ac-avnuisi-shard-00-02.7mdbr1u.mongodb.net:27017/?ssl=true&replicaSet=atlas-80bsja-shard-0&authSource=admin&appName=Cluster0";
 
 mongoose.connect(mongoURI)
     .then(() => console.log("✅ Connected to MongoDB Atlas"))
