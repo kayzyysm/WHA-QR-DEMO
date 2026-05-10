@@ -4,7 +4,6 @@ const mongoose = require('mongoose');
 const PDFDocument = require('pdfkit');
 const bwipjs = require('bwip-js');
 const path = require('path');
-const PORT = process.env.PORT || 5000;
 
 const app = express();
 app.use(cors());
@@ -365,7 +364,7 @@ app.post('/generate-outbound-receipt', async (req, res) => {
 // ==========================================
 // 5. SERVER LISTEN
 // ==========================================
-const PORT = 5000;
-app.listen(PORT, () => {
-    console.log(`🚀 Warehouse Backend is running on http://localhost:${PORT}`);
+const PORT = process.env.PORT || 5000;
+app.listen(PORT, '0.0.0.0', () => {
+    console.log(`🚀 Warehouse Backend is running on ${PORT}`);
 });
