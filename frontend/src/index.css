@@ -1,0 +1,14 @@
+@import "tailwindcss";
+
+/* บังคับสีปุ่มและตัวหนังสือภายใน Scanner ให้เป็นสีเข้มเสมอ */
+#reader button {
+  background-color: #2563eb !important; /* สีน้ำเงิน */
+  color: white !important;
+  padding: 8px 16px !important;
+  border-radius: 8px !important;
+  font-weight: bold !important;
+}
+
+#reader span, #reader a {
+  color: #1e293b !important; /* สีเทาเข้ม */
+}
